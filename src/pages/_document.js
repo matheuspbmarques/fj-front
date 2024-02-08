@@ -6,9 +6,10 @@ export default function Document() {
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
       </Head>
-      <body>
+      <body className="min-h-dvh max-h-dvh">
         <Main />
         <NextScript />
+        <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script>
       </body>
     </Html>
   );

@@ -10,10 +10,14 @@ module.exports = {
       colors: {
         green: {
           default: '#00B894',
-          hover: '#00E0B5'
+          hover: '#00E0B5',
+          block: '#005A49'
         }
       },
       minHeight: {
+        'dvh': '100dvh'
+      },
+      maxHeight: {
         'dvh': '100dvh'
       }
     },

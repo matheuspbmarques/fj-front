@@ -28,7 +28,7 @@ function LateralMenu({ show, setShow }){
     }, [show])
 
     return(
-        <div className='min-h-dvh w-full absolute flex' ref={containerRef}>
+        <div className='min-h-dvh w-full fixed flex' ref={containerRef}>
 
             <div className='flex-1 duration-300' ref={emptySpaceRef} onClick={() => setShow(show ? false : true)} />
 
@@ -69,7 +69,7 @@ export default function DashboardLayout({ children }){
                         <GoogleIcons name={'menu_open'} color={zinc[50]} />
                     </button>
                 </header>
-                <main className='p-6 gap-6 flex flex-col'>
+                <main className='py-6 gap-6 flex flex-col'>
                     { children }
                 </main>
             </div>
