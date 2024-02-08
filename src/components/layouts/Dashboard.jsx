@@ -65,9 +65,14 @@ export default function DashboardLayout({ children }){
                 <header className='bg-green-default p-6 flex justify-between items-center'>
                     <Image alt='Logo' src={logoHorizontalSvg} />
 
-                    <button className='flex' onClick={() => setShowLateralMenu(showLateralMenu ? false : true)}>
+                    <button className='flex sm:hidden' onClick={() => setShowLateralMenu(showLateralMenu ? false : true)}>
                         <GoogleIcons name={'menu_open'} color={zinc[50]} />
                     </button>
+
+                    <Link href={'/dashboard/clients'} className='hidden sm:flex gap-2 text-zinc-50 hover:bg-green-hover p-2 rounded duration-300'>
+                        <GoogleIcons name={'group'} color={zinc[50]} />
+                        Clientes
+                    </Link>
                 </header>
                 <main className='py-6 gap-6 flex flex-col'>
                     { children }

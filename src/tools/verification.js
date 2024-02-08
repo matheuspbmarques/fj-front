@@ -15,7 +15,7 @@ function verification(value, type){
         }
 
         case 'isPhone': {
-            return /\([0-9]{2}\) {1}9{1}[0-9]{4}-{1}[0-9]{4}/
+            return /\([0-9]{2}\) {1}9{0,1}[0-9]{4}-{1}[0-9]{4}/
             .test(value)
         }
     }

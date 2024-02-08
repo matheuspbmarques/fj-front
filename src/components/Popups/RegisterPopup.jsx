@@ -6,10 +6,12 @@ import Clients from '../../apis/cleanHouse/Clients'
 import { useState } from "react";
 import Lottie from "lottie-react";
 import loadingAnimation from '../../assets/animations/loading-gray.json'
+import Mask from "@/tools/Mask";
 
 export default function RegisterPopup({ close, getClients }){
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
+    const [phone, setPhone] = useState('')
 
     function register(error, data){
         setLoading(true)
@@ -28,7 +30,7 @@ export default function RegisterPopup({ close, getClients }){
     }
 
     return(
-        <Popup close={close} title={'Novo cliente'} disableClose={loading}>
+        <Popup close={close} title={'Novo cliente'} disableClose={loading} className={`w-full max-w-80`}>
             <IForm
                 className={`flex flex-col gap-2`}
                 submit={register}
@@ -63,7 +65,15 @@ export default function RegisterPopup({ close, getClients }){
             >
                 <IIpunt label={'Nome'} inputId={'name'} name={'name'} errorMessage={error?.name?.errorMessage} onChange={() => setError(undefined)} />
                 <IIpunt label={'E-mail'} inputId={'email'} name={'email'} errorMessage={error?.email?.errorMessage} onChange={() => setError(undefined)} />
-                <IIpunt label={'Telefone'} inputId={'phone'} name={'phone'} errorMessage={error?.phone?.errorMessage} onChange={() => setError(undefined)} />
+                <IIpunt label={'Telefone'} inputId={'phone'} name={'phone'} errorMessage={error?.phone?.errorMessage}
+                    onChange={(e) => {
+                        setError(undefined)
+                        setPhone(Mask.phone(e.target.value))
+                    }}
+                    value={phone}
+                    inputMode={'numeric'}
+                    maxLength={15}
+                />
                 <IIpunt label={'Coordenada X'} inputId={'coordinate-x'} name={'coordinateX'} errorMessage={error?.coordinateX?.errorMessage} onChange={() => setError(undefined)} />
                 <IIpunt label={'Coordenada Y'} inputId={'coordinate-y'} name={'coordinateY'} errorMessage={error?.coordinateY?.errorMessage} onChange={() => setError(undefined)} />
                 <IButton type={'submit'} disable={loading} >

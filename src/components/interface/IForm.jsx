@@ -34,18 +34,20 @@ export default function IForm({ children, className, submit, verifications }){
                     Object.assign(result, { [key]: value.length == 1 ? value[0] : value })
                 }
 
-                for(const { inputName, types } of verifications){
-                    for(const { type, errorMessage } of types){
-                        const value = result[inputName]
-
-                        if(!verification(value, type)){
-                            submit(true, {
-                                [inputName]: {
-                                    errorMessage: errorMessage
-                                }
-                            })
-
-                            return
+                if(verifications){
+                    for(const { inputName, types } of verifications){
+                        for(const { type, errorMessage } of types){
+                            const value = result[inputName]
+    
+                            if(!verification(value, type)){
+                                submit(true, {
+                                    [inputName]: {
+                                        errorMessage: errorMessage
+                                    }
+                                })
+    
+                                return
+                            }
                         }
                     }
                 }

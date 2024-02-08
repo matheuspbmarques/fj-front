@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 
-export default function IIpunt({ label, inputId, name, errorMessage, onChange }){
+export default function IIpunt({ label, inputId, name, errorMessage, onChange, value, inputMode, maxLength }){
     const labelRef = useRef()
 
     const [hiddenLabel, setHiddenLabel] = useState(false)
@@ -31,6 +31,9 @@ export default function IIpunt({ label, inputId, name, errorMessage, onChange })
                     e.currentTarget.value == '' && setHiddenLabel(false)
                 }}
                 onChange={onChange}
+                value={value}
+                inputMode={inputMode}
+                maxLength={maxLength}
             />
             { errorMessage && <span className="text-xs text-rose-600">{ errorMessage }</span> }
         </div>
